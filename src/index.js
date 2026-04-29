@@ -14,6 +14,8 @@ import TransactionDetail from "./components/TransactionDetail";
 import LimitsPage from "./pages/LimitsPage";
 import Excel from "./pages/Excel";
 import ForecastPage from "./pages/Forecast";
+import AiAssistant from "./pages/AiAssistant";
+import Tariffs from "./pages/Tariffs";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const router = createBrowserRouter([
@@ -26,6 +28,22 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Home />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/ai-assistant",
+        element: (
+          <ProtectedRoute>
+            <AiAssistant />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/tariffs",
+        element: (
+          <ProtectedRoute>
+            <Tariffs />
           </ProtectedRoute>
         ),
       },

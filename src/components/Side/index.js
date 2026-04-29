@@ -144,6 +144,75 @@ function Side() {
         </li>
         <li
           className={styles.menu__item}
+          onClick={() => setActiveItem("ai")}
+        >
+          <Link to="/ai-assistant" style={{ display: "flex" }}>
+            <svg
+              width="21"
+              height="21"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2L13.8 8.2L20 10L13.8 11.8L12 18L10.2 11.8L4 10L10.2 8.2L12 2Z"
+                fill={getFillColor("ai")}
+              />
+              <path
+                d="M18 15L18.9 18.1L22 19L18.9 19.9L18 23L17.1 19.9L14 19L17.1 18.1L18 15Z"
+                fill={getFillColor("ai")}
+              />
+              <path
+                d="M5 14L5.7 16.3L8 17L5.7 17.7L5 20L4.3 17.7L2 17L4.3 16.3L5 14Z"
+                fill={getFillColor("ai")}
+              />
+            </svg>
+
+            <span>ИИ-помощник</span>
+          </Link>
+        </li>
+        <li
+          className={styles.menu__item}
+          onClick={() => setActiveItem("tariffs")}
+        >
+          <Link to="/tariffs" style={{ display: "flex" }}>
+            <svg
+              width="21"
+              height="21"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 6C4 4.89543 4.89543 4 6 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6Z"
+                stroke={getFillColor("tariffs")}
+                strokeWidth="2"
+              />
+              <path
+                d="M8 9H16"
+                stroke={getFillColor("tariffs")}
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M8 13H14"
+                stroke={getFillColor("tariffs")}
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M8 17H12"
+                stroke={getFillColor("tariffs")}
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+
+            <span>Тарифы</span>
+          </Link>
+        </li>
+        <li
+          className={styles.menu__item}
           onClick={() => setActiveItem("limit")}
         >
           <Link to="/limit" style={{ display: "flex" }}>
