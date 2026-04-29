@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 import LoginButton from "../Auth/LoginButton.js";
 import LogoutButton from "../Auth/LogoutButton.js";
 import Profile from "../Auth/Profile.js";
-import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
 function Side() {
-  const { isAuthenticated } = useAuth0();
   const [activeItem, setActiveItem] = useState("home");
   const getFillColor = (item) => (activeItem === item ? "#4E36FC" : "#1B1D4E");
   return (
@@ -94,14 +92,14 @@ function Side() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M15.2603 4.96271V7.99527L20.2761 3.97948L15.2603 -0.00106812V2.96271H13.1804H12.7662L12.4733 3.2556L3.2623 12.4666H0.28125V14.4666H3.67651H4.09073L4.38362 14.1737L13.5946 4.96271H15.2603Z"
                 fill={getFillColor("stats")}
               />
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M15.2603 12.1986V9.16608L20.2761 13.1819L15.2603 17.1624V14.1986H13.1804H12.7662L12.4733 13.9057L3.2623 4.69472H0.28125V2.69472H3.67651H4.09073L4.38362 2.98761L13.5946 12.1986H15.2603Z"
                 fill={getFillColor("stats")}
               />
@@ -226,20 +224,20 @@ function Side() {
               <path
                 d="M10.49 20.5072C16.0128 20.5072 20.49 16.03 20.49 10.5072C20.49 4.98432 16.0128 0.507172 10.49 0.507172C4.96714 0.507172 0.48999 4.98432 0.48999 10.5072C0.48999 16.03 4.96714 20.5072 10.49 20.5072Z"
                 stroke={getFillColor("limit")}
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M10.49 15.5072V16.4972"
                 stroke={getFillColor("limit")}
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M10.49 12.5072V4.50717"
                 stroke={getFillColor("limit")}
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
 

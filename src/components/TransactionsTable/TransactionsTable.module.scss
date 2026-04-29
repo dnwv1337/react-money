@@ -77,3 +77,51 @@ $screen-xl: 960px;
     border-bottom: 1px solid #d9d5ec;
   }
 }
+
+@media (max-width: $screen-md) {
+  .table {
+    display: block;
+    border-collapse: separate;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: grid;
+      gap: 12px;
+    }
+
+    tr {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #d9d5ec;
+      border-radius: 12px;
+      background-color: $color--white;
+      box-shadow: 0 2px 8px rgba(12, 26, 75, 0.08);
+    }
+
+    td {
+      display: grid;
+      grid-template-columns: minmax(94px, 36%) minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0eef9;
+      word-break: break-word;
+
+      &::before {
+        content: attr(data-label);
+        color: #6e6893;
+        font-size: $fs-xs;
+        font-weight: $fw-semi;
+        text-transform: uppercase;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}

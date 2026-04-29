@@ -115,4 +115,44 @@ $screen-xl: 960px;
   font-weight: 700;
   margin-top: 2px;
 }
+
+@media (max-width: $screen-md) {
+  .calendar {
+    width: 100%;
+    padding: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dayPicker {
+    min-width: 640px;
+    font-size: $fs-1;
+    border-spacing: 4px 6px;
+  }
+
+  .day_buttton {
+    min-height: 58px;
+    height: auto;
+    margin: 4px;
+    padding: 8px 6px;
+    font-size: $fs-xs;
+  }
+
+  .day__date {
+    font-size: $fs-1;
+    margin-bottom: 4px;
+  }
+
+  .day__result {
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 480px) {
+  .dayPicker {
+    min-width: 560px;
+  }
+}
 // ===//CALENDAR=== //

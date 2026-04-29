@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { useDayDate } from "../hooks/useDayDate";
 
 function Transactions() {
-  const { transactions, setTransactions } = useOutletContext();
+  const { transactions } = useOutletContext();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => {

@@ -7,7 +7,7 @@ import TransactionModal from "../TransactionModal";
 import { Link } from "react-router-dom";
 function Transaction({ date, type, source, description, summ, currency, id }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { transactions, setTransactions } = useOutletContext();
+  const { setTransactions } = useOutletContext();
   //Модалка
   const [isEditModalOpen, setIsEditModalOpen] = React.useState(false);
   const [transactionToEdit, setTransactionToEdit] = React.useState(false);
@@ -106,8 +106,10 @@ function Transaction({ date, type, source, description, summ, currency, id }) {
   return (
     <>
       <tr>
-        <td className={styles.date_td}>{formatDate(date)}</td>
-        <td className={styles.details_td}>
+        <td className={styles.date_td} data-label="Дата">
+          {formatDate(date)}
+        </td>
+        <td className={styles.details_td} data-label="Тип">
           <span
             className={styles.table__status}
             style={{
@@ -142,19 +144,19 @@ function Transaction({ date, type, source, description, summ, currency, id }) {
             </span>
           </div>
         </td>
-        <td className={styles.desription_td}>
+        <td className={styles.desription_td} data-label="Описание">
           <span>{description}</span>
         </td>
-        <td>
+        <td data-label="Сумма">
           <div className={styles.table__amount}>
             <span className={styles.amount}>{summ}</span>
             <span className={styles.currency}>{currency}</span>
           </div>
         </td>
-        <td className={styles.about}>
+        <td className={styles.about} data-label="Детали">
           <span>Подробнее</span>
         </td>
-        <td className={styles.dots} onClick={toggleMenu}>
+        <td className={styles.dots} data-label="Действия" onClick={toggleMenu}>
           <img src="./img/more.svg" alt="" />
           {isMenuOpen && (
             <div className={styles.dropdownMenu}>

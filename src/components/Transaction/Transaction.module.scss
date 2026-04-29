@@ -143,3 +143,58 @@ $screen-xl: 960px;
 .dropdownMenuClose:hover {
   color: #444;
 }
+
+@media (max-width: $screen-md) {
+  .date_td {
+    font-size: $fs-1;
+  }
+
+  .details_td {
+    min-width: 0;
+  }
+
+  .table__status {
+    max-width: 100%;
+  }
+
+  .table__details_text {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    .source {
+      padding: $base $base * 2;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .desription_td,
+  .description_td {
+    span {
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .table__amount {
+    align-items: flex-start;
+  }
+
+  .dots {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 42px;
+  }
+
+  .dots > img {
+    width: 28px;
+    margin-left: auto;
+  }
+
+  .dropdownMenu {
+    top: 38px;
+    right: 0;
+    width: 180px;
+  }
+}

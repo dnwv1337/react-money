@@ -78,6 +78,19 @@ function AiAssistant() {
         оценивает динамику расходов и формирует рекомендации по оптимизации бюджета.
       </p>
 
+      {planData && (
+        <div className="ai-assistant__plan">
+          Текущий тариф:{" "}
+          <strong>{planData.plan === "premium" ? "Premium" : "Free"}</strong>
+          {planData.plan !== "premium" && (
+            <span>
+              {" "}
+              ({planData.aiRequestsUsed}/{planData.aiRequestsLimit} ИИ-анализов)
+            </span>
+          )}
+        </div>
+      )}
+
       <button className="button__add_transaction" onClick={handleAnalyze} disabled={loading}>
         {loading ? "Формируется анализ..." : "Сформировать ИИ-анализ"}
       </button>

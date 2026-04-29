@@ -146,3 +146,71 @@ fieldset {
     color: $color--red-text;
   }
 }
+
+@media (max-width: $screen-md) {
+  .form {
+    width: min(100%, 420px);
+  }
+
+  .topWrapper {
+    gap: 12px;
+  }
+
+  .title {
+    font-size: $fs-3;
+    line-height: 1.25;
+  }
+
+  .close {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flexContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .label {
+    margin-right: 0;
+    font-size: $fs-2;
+  }
+
+  .input,
+  .select,
+  .textarea,
+  .custom_date_input {
+    width: 100%;
+    min-height: 44px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      transform: none;
+    }
+  }
+
+  .fieldset {
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: $fs-2;
+  }
+
+  .radioLabelIncome,
+  .radioLabelExpense {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+  }
+
+  .button__submit {
+    width: 100%;
+    min-height: 44px;
+  }
+}

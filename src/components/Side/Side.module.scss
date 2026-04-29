@@ -76,4 +76,70 @@ $screen-xl: 960px;
   }
 }
 
+@media (max-width: $screen-md) {
+  .slide {
+    width: 100%;
+    height: 76px;
+    min-height: 76px;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: $color--white;
+    border-top: 1px solid #d9d5ec;
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.08);
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .topWrapper,
+  .profie__wrapper,
+  .slide > button {
+    display: none;
+  }
+
+  .menu {
+    width: max-content;
+    min-width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .menu__item {
+    flex: 0 0 auto;
+    min-width: 78px;
+    margin-bottom: 0;
+    justify-content: center;
+
+    a {
+      min-height: 58px;
+      padding: 7px 10px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 10px;
+      gap: 4px;
+    }
+
+    svg {
+      margin-right: 0;
+      width: 21px;
+      height: 21px;
+    }
+
+    span {
+      font-size: $fs-xs;
+      line-height: 1.1;
+      text-align: center;
+      white-space: nowrap;
+    }
+  }
+}
+
 // === /SIDE === //
