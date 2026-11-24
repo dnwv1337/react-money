@@ -456,6 +456,38 @@ button {
   color: #333;
 }
 
+.excel-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.excel-description {
+  max-width: 760px;
+  margin-bottom: 16px;
+  color: #4b5563;
+  font-size: $fs-2;
+  line-height: 1.45;
+}
+
+.excel-status {
+  display: inline-block;
+  margin: 8px 0 16px;
+  padding: 10px 14px;
+  border: 1px solid #4e36fc;
+  border-radius: 6px;
+  background: #f4f2ff;
+  color: #2f2397;
+  font-size: $fs-2;
+  font-weight: $fw-medium;
+}
+
+.excel-subtitle {
+  margin: 24px 0 16px;
+  font-size: $fs-4;
+  color: #333;
+}
+
 .file-upload-input {
   display: inline-block;
   padding: 12px 20px;
@@ -927,5 +959,33 @@ h2 {
   .ai-assistant__result,
   .tariff-card {
     padding: 14px;
+  }
+}
+
+.stats-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  .date-picker-container { margin: 0; }
+}
+.stats-category-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  max-width: 100%;
+
+  select {
+    min-height: 38px;
+    width: 100%;
+    padding: 8px 32px 8px 12px;
+    border: 1px solid #4e36fc;
+    border-radius: 8px;
+    background: #fff;
+    color: #1e1d50;
+    font-size: 16px;
   }
 }

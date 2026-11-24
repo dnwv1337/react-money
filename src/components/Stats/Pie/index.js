@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
-import { AppContext } from "../../../App";
-import { Timestamp } from "firebase/firestore";
+import { parseTransactionAmount } from "../../../utils/transactionAmount";
+import { transactionCategory } from "../../../utils/statsData";
 
 // Настройки графиков с различными цветами
 const options = (title, colors) => ({
@@ -18,56 +18,20 @@ const options = (title, colors) => ({
   },
 });
 
-// Категории транзакций
-const CATEGORIES = {
-  Расход: [
-    "Супермаркеты",
-    "Переводы",
-    "Фастфуд",
-    "Одежда и обувь",
-    "Мобильная связь",
-    "Аптеки",
-    "Транспорт",
-    "Остальное",
-  ],
-  Доход: ["Зарплата", "Доп. зарабаток", "Соц. выплата", "Остальное"],
-};
-
-function PieChart({ start, end, type, colors }) {
-  const { transactions } = useContext(AppContext);
+function PieChart({ transactions, type, colors }) {
   const [chartData, setChartData] = useState([["Категория", "Сумма"]]);
 
   useEffect(() => {
-    const startDate = new Date(start);
-    const endDate = new Date(end);
-
-    startDate.setHours(0, 0, 0, 0);
-    endDate.setHours(23, 59, 59, 999);
-
-    const formatFirebaseDate = (date) =>
-      date instanceof Timestamp ? date.toDate() : new Date(date);
-
-    const groupedData = {};
-
+    const groupedData = new Map();
     transactions.forEach((transaction) => {
-      const transactionDate = formatFirebaseDate(transaction.date);
-      if (
-        transactionDate >= startDate &&
-        transactionDate <= endDate &&
-        transaction.type === type
-      ) {
-        const categoryList = CATEGORIES[type];
-        const category = categoryList.includes(transaction.source)
-          ? transaction.source
-          : "Остальное";
-
-        groupedData[category] =
-          (groupedData[category] || 0) + parseFloat(transaction.summ);
-      }
+      if (transaction.type !== type) return;
+      const category = transactionCategory(transaction);
+      groupedData.set(category, (groupedData.get(category) || 0) +
+        (parseTransactionAmount(transaction.summ) ?? 0));
     });
 
     const dataArray = [["Категория", "Сумма"]];
-    Object.entries(groupedData).forEach(([category, sum]) => {
+    [...groupedData.entries()].forEach(([category, sum]) => {
       if (sum > 0) dataArray.push([category, sum]);
     });
 
@@ -76,7 +40,7 @@ function PieChart({ start, end, type, colors }) {
     }
 
     setChartData(dataArray);
-  }, [transactions, start, end, type]);
+  }, [transactions, type]);
 
   return (
     <div style={{ width: "100%", height: "400px", marginBottom: "30px" }}>
@@ -95,12 +59,11 @@ function PieChart({ start, end, type, colors }) {
   );
 }
 
-export default function PieChartsContainer({ start, end }) {
+export default function PieChartsContainer({ transactions = [] }) {
   return (
     <>
       <PieChart
-        start={start}
-        end={end}
+        transactions={transactions}
         type="Доход"
         colors={[
           "#4CAF50", // Зеленый для зарплаты
@@ -110,8 +73,7 @@ export default function PieChartsContainer({ start, end }) {
         ]}
       />
       <PieChart
-        start={start}
-        end={end}
+        transactions={transactions}
         type="Расход"
         colors={[
           "#F44336", // Ярко-красный для супермаркетов

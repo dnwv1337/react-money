@@ -197,6 +197,8 @@ function TransactionModal({
             <input
               className={styles.input}
               type="number"
+              required
+              step="0.01"
               id="summ"
               name="summ"
               placeholder="Введите сумму"

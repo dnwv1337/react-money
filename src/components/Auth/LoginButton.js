@@ -6,8 +6,19 @@ const LoginButton = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const handleLogin = async () => {
-    await login();
-    navigate("/");
+    try {
+      const loggedInUser = await login();
+      if (loggedInUser) {
+        navigate("/");
+      }
+    } catch (error) {
+      const message =
+        error?.code === "auth/unauthorized-domain"
+          ? "Этот домен не добавлен в Firebase Authentication. Добавь домен Netlify в Firebase Console -> Authentication -> Settings -> Authorized domains."
+          : `Не удалось войти: ${error?.message || error}`;
+
+      alert(message);
+    }
   };
   return (
     !user && (

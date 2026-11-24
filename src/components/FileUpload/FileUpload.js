@@ -4,24 +4,27 @@ import React from "react";
 function FileUpload({ onFileSelect }) {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (
-      file &&
-      file.type ===
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    ) {
-      // Переименовываем файл перед передачей
-      const renamedFile = new File([file], `new_name_${file.name}`, {
-        type: file.type,
-      });
-      onFileSelect(renamedFile);
+    const allowedExtensions = [".xlsx", ".xls", ".csv"];
+    const fileName = file?.name?.toLowerCase() || "";
+    const isAllowedFile = allowedExtensions.some((extension) =>
+      fileName.endsWith(extension)
+    );
+
+    if (file && isAllowedFile) {
+      onFileSelect(file);
     } else {
-      alert("Пожалуйста, загрузите файл формата Excel.");
+      alert("Пожалуйста, загрузите файл формата Excel или CSV.");
     }
   };
 
   return (
     <div>
-      <input type="file" accept=".xlsx,.xls" onChange={handleFileChange} />
+      <input
+        className="file-upload-input"
+        type="file"
+        accept=".xlsx,.xls,.csv,text/csv"
+        onChange={handleFileChange}
+      />
     </div>
   );
 }

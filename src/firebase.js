@@ -49,8 +49,10 @@ const login = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
     console.log("Вход выполнен:", result.user); // Отладка
+    return result.user;
   } catch (error) {
-    alert(error);
+    console.error("Ошибка входа:", error);
+    throw error;
   }
 };
 const logout = async () => {
